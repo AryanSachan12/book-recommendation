@@ -17,6 +17,14 @@ st.title("Book Recommendation (Collaborative Filtering)")
 # Select a book from the dropdown
 selected_book = st.selectbox("Enter your favorite book", book_titles)
 
+# Get the image URL for the selected book (small size)
+selected_book_image_url = book_images.loc[
+    book_images["Book-Title"] == selected_book, "Image-URL-L"
+].values[0]
+
+# Display the selected book image inline with the select box
+st.image(selected_book_image_url, width=100)
+
 # Get the index of the selected book
 book_index = book_pivot.index.get_loc(selected_book)
 
